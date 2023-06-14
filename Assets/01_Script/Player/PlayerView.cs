@@ -26,4 +26,8 @@ public class PlayerView : MonoBehaviour
     {
         UIManager.instance.UiHeartUpdate(currentHeart);
     }
+    public void PlayerDie()
+    {
+        anim.SetTrigger("Die");
+    }
 }

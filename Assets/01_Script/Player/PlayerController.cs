@@ -96,16 +96,32 @@ public class PlayerController : MonoBehaviour
         {
             Debug.Log("Ouch");
             //데미지 받기
-            GameManager.instance.PlayerGuardFail(collision.gameObject);
-            view.PlayerHeartChagne(model.heart);
-            if (model.HeartChange(-1)==false)
+            if(model.isAlive==true)
             {
-                PlayerDie();
+                GameManager.instance.PlayerGuardFail(collision.gameObject);
+                if (model.HeartChange(-1) == true)
+                {
+                    view.PlayerHeartChagne(model.heart);
+                }
+                else
+                {
+                    view.PlayerHeartChagne(model.heart);
+                    PlayerDie();
+                }
             }
+            
         }
     }
     public void PlayerDie()
     {
+        if (model.isAlive == true)
+            model.isAlive = false;
+
+        view.PlayerDie();
+
+        rigid.gravityScale = 0;
+        BoxCollider2D col = GetComponent<BoxCollider2D>();
+        col.enabled = false;
     }
 
 }

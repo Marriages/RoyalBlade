@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Threading;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class GameManager : MonoBehaviour
@@ -8,13 +9,17 @@ public class GameManager : MonoBehaviour
     public static GameManager instance;
     PlayerController player;
     EnemyBase eb;
+    ParticleSystem[] particle;
+    int particleIndex = 0;
     //---------------------------------------------------------------------------------------------------
 
     private void Awake()
     {
         if (instance == null)
             instance = this;
-
+        particle = new ParticleSystem[3];
+        for(int i=0;i< particle.Length;i++)
+            particle[i] = transform.GetChild(0).GetComponent<ParticleSystem>();
     }
 
     private void Start()
@@ -89,6 +94,8 @@ public class GameManager : MonoBehaviour
     }
     public void PlayerGuardFail(GameObject obj)
     {
+        if (eb == null)
+            eb = obj.GetComponent<EnemyBase>();
         if (eb.gameObject != obj)
             eb = obj.GetComponent<EnemyBase>();
         //UIManager 에게 Heart감소 알림
@@ -113,5 +120,11 @@ public class GameManager : MonoBehaviour
         eb.EnemyTouch();
     }
     //-----------------------------------Player Behavior-------------------------------------------------
-
+    public void EnemyDieEffect(Vector3 trans)
+    {
+        particle[particleIndex].transform.position = trans;
+        particle[particleIndex].Play();
+        particleIndex++;
+        particleIndex %= particle.Length;
+    }
 }

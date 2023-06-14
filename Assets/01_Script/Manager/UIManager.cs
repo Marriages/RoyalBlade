@@ -12,9 +12,13 @@ public class UIManager : MonoBehaviour
 
     Button Pause;
     TextMeshProUGUI heartText;
-    string[] heartTexts= { "♥", "♥♥", "♥♥♥" };
+    string[] heartTexts= { "","♥", "♥♥", "♥♥♥" };
     TextMeshProUGUI coinText;
+    int currentCoin=0;
     TextMeshProUGUI scoreText;
+    float currentScore=0;
+    float targetScore = 0;
+    float minScoreUpSpeed = 3;
     TextMeshProUGUI jewelText;
     AttackButton attackButton;
 
@@ -53,10 +57,27 @@ public class UIManager : MonoBehaviour
     }
     void UiInitialize()
     {
-        heartText.text = heartTexts[2];
-        scoreText.text = "Score : 0";
+        heartText.text = heartTexts[3];
+
+        scoreText.text = "0";
+        currentScore = 0;
         coinText.text = "0";
+        currentCoin = 0;
         jewelText.text = "0";
+    }
+    private void Update()
+    {
+
+        //Score 점진적 Update
+        if (currentScore < targetScore)
+        {
+            float speed = Mathf.Max( (float)(targetScore - currentScore) * 5.0f, minScoreUpSpeed);
+            currentScore += Time.deltaTime * speed;
+
+            currentScore = Mathf.Min(currentScore, targetScore); 
+            scoreText.text = $"{currentScore:f0}"; 
+        }
+        
     }
 
     public void UiHeartUpdate(int value)
@@ -65,8 +86,19 @@ public class UIManager : MonoBehaviour
             Debug.LogWarning("Heart는 0보다 작아질 수 없습니다");
         else if(value>3)
             Debug.LogWarning("Heart는 3보다 커질 수 없습니다");
-        heartText.text = heartTexts[value-1];
+        else
+            heartText.text = heartTexts[value];
     }
+    public void UiScoreUpdate(int value)
+    {
+        targetScore += value;
+    }
+    public void UiCoinUpdate(int value)
+    {
+        currentCoin += value;
+        coinText.text = currentCoin.ToString();
+    }
+
     public void UiGuardCoolTimeEffect(float cooltime)
     {
         StartCoroutine(UiGuardCoolTime(cooltime));

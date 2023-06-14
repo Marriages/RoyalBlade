@@ -6,6 +6,8 @@ public class EnemyBase : MonoBehaviour
 {
     Rigidbody2D rigid;
     float bounceForce = 5f;
+    int score = 10;
+    int coin=1;
     Vector2 bounceVector = Vector2.zero;
     float hp = 3f;
     public float Hp
@@ -47,6 +49,9 @@ public class EnemyBase : MonoBehaviour
         Debug.Log("Enemy Die");
         Destroy(this.gameObject);
         //동전과 파편을 소환 , 점수 부여 -> prograss 진행
+        UIManager.instance.UiScoreUpdate(score);
+        UIManager.instance.UiCoinUpdate(coin);
+        GameManager.instance.EnemyDieEffect(transform.position);
     }
     public void EnemyTouch()
     {
