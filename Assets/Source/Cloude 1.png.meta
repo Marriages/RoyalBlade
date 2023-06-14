@@ -1,0 +1,480 @@
+fileFormatVersion: 2
+guid: d7d28e31caccd3244b2a6e27f719173b
+TextureImporter:
+  internalIDToNameTable: []
+  externalObjects: {}
+  serializedVersion: 12
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Server
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: Cloude 1_0
+      rect:
+        serializedVersion: 2
+        x: 120
+        y: 880
+        width: 580
+        height: 200
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6c6b2ac0ea090984d8d3370d95d0483a
+      internalID: 1411189008
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Cloude 1_10
+      rect:
+        serializedVersion: 2
+        x: 980
+        y: 680
+        width: 640
+        height: 300
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ec4f2b10780217440938dfc8d1cf4d58
+      internalID: -1697798956
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Cloude 1_16
+      rect:
+        serializedVersion: 2
+        x: 380
+        y: 720
+        width: 200
+        height: 100
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 470c05e7db34fe24398d57514656505a
+      internalID: 1313785850
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Cloude 1_21
+      rect:
+        serializedVersion: 2
+        x: 120
+        y: 720
+        width: 200
+        height: 80
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d31679c3753383144a395c5323e7c07e
+      internalID: -1073887336
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Cloude 1_30
+      rect:
+        serializedVersion: 2
+        x: 660
+        y: 720
+        width: 80
+        height: 60
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4aaf6e35830c8c449b6332453f550ac4
+      internalID: 1843317618
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Cloude 1_45
+      rect:
+        serializedVersion: 2
+        x: 160
+        y: 600
+        width: 80
+        height: 40
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 52396538c35994f4ea24010234e01f3f
+      internalID: 529665896
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Cloude 1_47
+      rect:
+        serializedVersion: 2
+        x: 300
+        y: 600
+        width: 120
+        height: 60
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 09011b0c6d802f6449d6d92c0a7b9264
+      internalID: 388772146
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Cloude 1_51
+      rect:
+        serializedVersion: 2
+        x: 500
+        y: 440
+        width: 460
+        height: 160
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fbadec66d77c1364391073467e19a329
+      internalID: -1462452922
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Cloude 1_64
+      rect:
+        serializedVersion: 2
+        x: 1080
+        y: 420
+        width: 520
+        height: 140
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c6617fc25c034b548b48a3d21f72e22b
+      internalID: 341719240
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Cloude 1_67
+      rect:
+        serializedVersion: 2
+        x: 100
+        y: 360
+        width: 340
+        height: 120
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9d26e8a167a0e0241b379c33485a512f
+      internalID: -850999126
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Cloude 1_81
+      rect:
+        serializedVersion: 2
+        x: 920
+        y: 160
+        width: 700
+        height: 160
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c90e92aa35d656148a8ff10547545711
+      internalID: 1155729707
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Cloude 1_84
+      rect:
+        serializedVersion: 2
+        x: 80
+        y: 80
+        width: 820
+        height: 160
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bff23210cc805c44d8ff7860c846bbc3
+      internalID: 210231838
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    nameFileIdTable:
+      Cloude 1_0: 1411189008
+      Cloude 1_1: -1067363845
+      Cloude 1_10: -1697798956
+      Cloude 1_11: 630311486
+      Cloude 1_12: -1902708725
+      Cloude 1_13: 1922065938
+      Cloude 1_14: -875917266
+      Cloude 1_15: 1000609189
+      Cloude 1_16: 1313785850
+      Cloude 1_17: 157730118
+      Cloude 1_18: 1339453638
+      Cloude 1_19: -446628719
+      Cloude 1_2: -77888753
+      Cloude 1_20: -14419186
+      Cloude 1_21: -1073887336
+      Cloude 1_22: -1736515762
+      Cloude 1_23: -194813844
+      Cloude 1_24: 1480413734
+      Cloude 1_25: -353106898
+      Cloude 1_26: -1720764610
+      Cloude 1_27: -726750377
+      Cloude 1_28: 1099429350
+      Cloude 1_29: 29502986
+      Cloude 1_3: 1028982680
+      Cloude 1_30: 1843317618
+      Cloude 1_31: 688465738
+      Cloude 1_32: 2119366417
+      Cloude 1_33: 457077021
+      Cloude 1_34: 1715211639
+      Cloude 1_35: 692323135
+      Cloude 1_36: 1935077578
+      Cloude 1_37: -1056076807
+      Cloude 1_38: 947921689
+      Cloude 1_39: 225120516
+      Cloude 1_4: -1903887393
+      Cloude 1_40: 263383007
+      Cloude 1_41: 303672152
+      Cloude 1_42: 30238077
+      Cloude 1_43: 1607903413
+      Cloude 1_44: 1511237313
+      Cloude 1_45: 529665896
+      Cloude 1_46: -1664814134
+      Cloude 1_47: 388772146
+      Cloude 1_48: -201800343
+      Cloude 1_49: 975832482
+      Cloude 1_5: -1690223289
+      Cloude 1_50: 2085006642
+      Cloude 1_51: -1462452922
+      Cloude 1_52: -1649346169
+      Cloude 1_53: -217128287
+      Cloude 1_54: 706562571
+      Cloude 1_55: -1167051603
+      Cloude 1_56: -115909103
+      Cloude 1_57: 2097061568
+      Cloude 1_58: 1716246624
+      Cloude 1_59: -1551140503
+      Cloude 1_6: 1492076605
+      Cloude 1_60: 644601482
+      Cloude 1_61: -1775084370
+      Cloude 1_62: 1044091672
+      Cloude 1_63: 931475434
+      Cloude 1_64: 341719240
+      Cloude 1_65: -482534908
+      Cloude 1_66: -1175582846
+      Cloude 1_67: -850999126
+      Cloude 1_68: 268334209
+      Cloude 1_69: -488255086
+      Cloude 1_7: -1835819406
+      Cloude 1_70: -1008252528
+      Cloude 1_71: 1045157364
+      Cloude 1_72: -862228316
+      Cloude 1_73: -579407768
+      Cloude 1_74: -400174262
+      Cloude 1_75: 734711727
+      Cloude 1_76: 1702852587
+      Cloude 1_77: 1087311524
+      Cloude 1_78: -193070181
+      Cloude 1_79: 1344046895
+      Cloude 1_8: 835632423
+      Cloude 1_80: -1718514745
+      Cloude 1_81: 1155729707
+      Cloude 1_82: 1980651903
+      Cloude 1_83: -2101003797
+      Cloude 1_84: 210231838
+      Cloude 1_85: 1169963789
+      Cloude 1_86: -577336842
+      Cloude 1_87: 712767737
+      Cloude 1_9: -1519251449
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
