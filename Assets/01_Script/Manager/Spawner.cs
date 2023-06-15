@@ -58,8 +58,7 @@ public class Spawner : MonoBehaviour
         {
             EnemyHpSetting();
         }
-        hpIndex++;
-        return enemyHps[hpIndex];
+        return enemyHps[hpIndex++];
     }
     public int GetScore()
     {
