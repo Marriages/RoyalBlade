@@ -3,21 +3,33 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+//Enemyì˜ HPê°’ì„ í”¼ë³´ë‚˜ì¹˜ì¸ë° íì— ë„£ì–´ë‘ê³ , 
+
 public class Spawner : MonoBehaviour
 {
-    int currentRound;
+    int currentRound=1;
     public int maxRound;
+
     int[] enemyHps;
+    int[] enemyScores;
+    int[] enemySpeeds= { 8, 10, 12, 14 };
+    int enemySpeedIndex = -1;
+    int[] enemyCoins;
 
+    EnemySet enemySet;
+
+    int hpIndex=0;
     public GameObject[] enemys;
+    //Enemyì˜ widthëŠ” 5, height ëŠ” 1
 
-    private void Awake()
+    private void OnEnable()
     {
-        
         EnemyHpSetting();
+        enemySet = transform.GetChild(0).GetComponent<EnemySet>();
     }
     void EnemyHpSetting()
     {
+        hpIndex = 0;
         enemyHps = new int[maxRound + 1];
         enemyHps[0] = 1;
         enemyHps[1] = 1;
@@ -26,7 +38,7 @@ public class Spawner : MonoBehaviour
     
     int EnemyHp(int hp)
     {
-        //µ¿Àû°èÈ¹¹ı¿¡ µû¶ó ÇÇº¸³ªÄ¡ ¼ö¿­¸¸Å­ ¸ó½ºÅÍµéÀÇ HP¸¦ ¹Ì¸® °áÁ¤Áö¾î³õÀ½. °ÔÀÓÀ» Àç½ÃÀÛ ÇÒ ¶§ µµ¿òÀÌ µÉ ¿¹Á¤.
+        //ë™ì ê³„íšë²•ì— ë”°ë¼ í”¼ë³´ë‚˜ì¹˜ ìˆ˜ì—´ë§Œí¼ ëª¬ìŠ¤í„°ë“¤ì˜ HPë¥¼ ë¯¸ë¦¬ ê²°ì •ì§€ì–´ë†“ìŒ. ê²Œì„ì„ ì¬ì‹œì‘ í•  ë•Œ ë„ì›€ì´ ë  ì˜ˆì •.
         if (enemyHps[hp] != 0) 
             return enemyHps[hp];
         else
@@ -34,5 +46,48 @@ public class Spawner : MonoBehaviour
             enemyHps[hp] = EnemyHp(hp - 1) + EnemyHp(hp - 2);
             return enemyHps[hp];
         }
+    }
+
+    private void Start()
+    {
+        UIManager.instance.UiStageUpdate(currentRound);
+    }
+    public int GetHp()
+    {
+        if(enemyHps==null)
+        {
+            EnemyHpSetting();
+        }
+        hpIndex++;
+        return enemyHps[hpIndex];
+    }
+    public int GetScore()
+    {
+        return 10 * currentRound;
+    }
+    public int GetCoin()
+    {
+        return 1 * currentRound;
+    }
+    public int GetSpeed()
+    {
+        if(enemySpeedIndex+1<enemySpeeds.Length)
+            enemySpeedIndex++;
+
+        return enemySpeeds[enemySpeedIndex];
+    }
+    public Vector3 GetStartPosition()
+    {
+        return this.transform.position;
+    }
+    public void EnemySetDie()
+    {
+        UIManager.instance.NextStageReady();
+        currentRound++;
+    }
+    public void EnemySpawnStart()
+    {
+        enemySet.gameObject.SetActive(true);
+        UIManager.instance.UiStageUpdate(currentRound);
     }
 }

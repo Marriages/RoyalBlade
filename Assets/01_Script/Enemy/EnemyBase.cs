@@ -51,7 +51,7 @@ public class EnemyBase : MonoBehaviour
         //동전과 파편을 소환 , 점수 부여 -> prograss 진행
         UIManager.instance.UiScoreUpdate(score);
         UIManager.instance.UiCoinUpdate(coin);
-        GameManager.instance.EnemyDieEffect(transform.position);
+        //GameManager.instance.EnemyDieEffect(transform.position);
     }
     public void EnemyTouch()
     {

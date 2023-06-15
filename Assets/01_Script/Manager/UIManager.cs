@@ -28,6 +28,12 @@ public class UIManager : MonoBehaviour
 
     JumpButton jumpButton;
     Slider prograssBar;
+    float currentPrograssValue=0;
+    float targetPrograssValue=0;
+
+    TextMeshProUGUI stage;
+
+    Button nextStageButton;
 
 
     private void Awake()
@@ -50,6 +56,10 @@ public class UIManager : MonoBehaviour
         jewelText = canvas.transform.GetChild(1).GetChild(2).GetChild(1).GetComponent<TextMeshProUGUI>();
 
         prograssBar = canvas.transform.GetChild(2).GetComponent<Slider>();
+
+        stage = canvas.transform.GetChild(3).GetComponent<TextMeshProUGUI>();
+
+        nextStageButton = canvas.transform.GetChild(4).GetComponent<Button>();
     }
     private void Start()
     {
@@ -77,7 +87,12 @@ public class UIManager : MonoBehaviour
             currentScore = Mathf.Min(currentScore, targetScore); 
             scoreText.text = $"{currentScore:f0}"; 
         }
-        
+        if (currentPrograssValue < targetPrograssValue)
+        {
+            prograssBar.value = Mathf.Lerp(currentPrograssValue, targetPrograssValue, Time.deltaTime * 2);
+            currentPrograssValue = prograssBar.value;
+        }
+
     }
 
     public void UiHeartUpdate(int value)
@@ -92,11 +107,26 @@ public class UIManager : MonoBehaviour
     public void UiScoreUpdate(int value)
     {
         targetScore += value;
+        scoreText.text = targetScore.ToString();
     }
     public void UiCoinUpdate(int value)
     {
         currentCoin += value;
         coinText.text = currentCoin.ToString();
+    }
+    public void UiStageUpdate(int value)
+    {
+        stage.text = $"Stage : {value}";
+    }
+    public void UiPrograssUpdate(float value)
+    {
+        targetPrograssValue = value;
+        if(value==0)
+        {
+            prograssBar.value = 0;
+            currentPrograssValue = 0;
+            
+        }
     }
 
     public void UiGuardCoolTimeEffect(float cooltime)
@@ -133,6 +163,11 @@ public class UIManager : MonoBehaviour
 
         guardButtonImage.raycastTarget = true;
         Debug.Log("Guard Colltime Effect End!");
+    }
+
+    public void NextStageReady()
+    {
+        nextStageButton.gameObject.SetActive(true);
     }
 
     

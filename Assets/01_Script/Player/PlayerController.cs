@@ -47,8 +47,7 @@ public class PlayerController : MonoBehaviour
         //Debug.Log("PlayerController : PlayerJump()");
         if (model.isLanding == true)
             rigid.AddForce(new(0, model.jumpPower), ForceMode2D.Impulse);
-        else
-            Debug.Log("PlayerController : PlayerJump() Fail : Not Landing");
+            //Debug.Log("PlayerController : PlayerJump() Fail : Not Landing");
     }
     public void PlayerGuardOn()
     {
@@ -88,8 +87,9 @@ public class PlayerController : MonoBehaviour
             GameManager.instance.PlayerGuardSuccess(collision.gameObject,model.guardCooltime);
             guardEffect.GuardEffectOn();
         }
-        else if (collision.collider.CompareTag("Enemy") && model.isGuarding == true)
+        else if (collision.collider.CompareTag("Enemy") && model.isGuarding == false && model.isLanding==false)
         {
+            GameManager.instance.PlayerTouchEnemy(collision.gameObject);
             //점프중에 적과 닿음. 적의 velocity 를 0으로 만들면 끝.
         }
         else if(collision.collider.CompareTag("Enemy") && model.isLanding==true)
@@ -109,7 +109,6 @@ public class PlayerController : MonoBehaviour
                     PlayerDie();
                 }
             }
-            
         }
     }
     public void PlayerDie()

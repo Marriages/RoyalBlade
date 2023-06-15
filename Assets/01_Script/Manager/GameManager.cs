@@ -8,24 +8,35 @@ public class GameManager : MonoBehaviour
 {
     public static GameManager instance;
     PlayerController player;
-    EnemyBase eb;
+    EnemySet enemySet;
+    EnemySingle enemySingle;
     ParticleSystem[] particle;
     int particleIndex = 0;
+    PlayerHitEffect[] hitEffects;
+    int hitEffectIndex = 0;
+    Spawner spawner;
     //---------------------------------------------------------------------------------------------------
 
     private void Awake()
     {
         if (instance == null)
             instance = this;
-        particle = new ParticleSystem[3];
+        particle = new ParticleSystem[transform.GetChild(0).childCount];
         for(int i=0;i< particle.Length;i++)
-            particle[i] = transform.GetChild(0).GetComponent<ParticleSystem>();
+            particle[i] = transform.GetChild(0).GetChild(i).GetComponent<ParticleSystem>();
+
+        hitEffects = new PlayerHitEffect[transform.GetChild(1).childCount];
+        for(int i=0;i<hitEffects.Length;i++)
+            hitEffects[i]=transform.GetChild(1).GetChild(i).GetComponent<PlayerHitEffect>();
+        spawner = GameObject.Find("Spawner").GetComponent<Spawner>();
+
     }
 
     private void Start()
     {
         if (player == null)
             TakePlayerController();
+        UIManager.instance.NextStageReady();
     }
     public PlayerController TakePlayerController()
     {
@@ -80,11 +91,12 @@ public class GameManager : MonoBehaviour
     public void PlayerGuardSuccess(GameObject obj,float cooltime)
     {
         //obj에는 가드에 성공한 게임 오브젝트가 넘어온다. 그 친구에게 접근해서 위로 튕길 수 있또록 해야 함
-        if(eb==null)
-            eb = obj.GetComponent<EnemyBase>();
-        if (eb.gameObject!=obj)
-            eb = obj.GetComponent<EnemyBase>();
-        eb.EnemyBounce();
+
+        if (enemySet == null)
+            enemySet = obj.transform.parent.GetComponent<EnemySet>();
+        else if (enemySet.gameObject != obj)
+            enemySet = obj.transform.parent.GetComponent<EnemySet>();
+        enemySet.EnemyBounce();
 
         //쿨타임 적용할 것
         //UIManager에게 일임
@@ -94,37 +106,52 @@ public class GameManager : MonoBehaviour
     }
     public void PlayerGuardFail(GameObject obj)
     {
-        if (eb == null)
-            eb = obj.GetComponent<EnemyBase>();
-        if (eb.gameObject != obj)
-            eb = obj.GetComponent<EnemyBase>();
+        if (enemySet == null)
+            enemySet = obj.transform.parent.GetComponent<EnemySet>();
+        else if (enemySet.gameObject != obj)
+            enemySet = obj.transform.parent.GetComponent<EnemySet>();
         //UIManager 에게 Heart감소 알림
-        eb.EnemyBounce();
+        enemySet.EnemyBounce();
     }
 
     public void PlayerAttackEnemy(GameObject obj,int damage)
     {
-        if (eb == null)
-            eb = obj.GetComponent<EnemyBase>();
-        if (eb.gameObject != obj)
-            eb = obj.GetComponent<EnemyBase>();
-        eb.EnemyHit(damage);
+        hitEffects[hitEffectIndex].transform.position =  obj.transform.position + new Vector3(Random.Range(-1f,1f),Random.Range(-0.5f,0.5f),0);
+        hitEffects[hitEffectIndex].gameObject.SetActive(true);
+        hitEffectIndex++;
+        hitEffectIndex %= hitEffects.Length;
+
+        if (enemySingle == null)
+            enemySingle = obj.GetComponent<EnemySingle>();
+        else if(enemySingle.gameObject != obj)
+            enemySingle = obj.GetComponent<EnemySingle>();
+
+        enemySingle.EnemySingleHit(damage);
     }
 
     public void PlayerTouchEnemy(GameObject obj)
     {
-        if (eb == null)
-            eb = obj.GetComponent<EnemyBase>();
-        if (eb.gameObject != obj)
-            eb = obj.GetComponent<EnemyBase>();
-        eb.EnemyTouch();
+
+        if (enemySet == null)
+            enemySet = obj.transform.parent.GetComponent<EnemySet>();
+        else if (enemySet.gameObject != obj)
+            enemySet = obj.transform.parent.GetComponent<EnemySet>();
+        enemySet.EnemyTouch();
     }
     //-----------------------------------Player Behavior-------------------------------------------------
-    public void EnemyDieEffect(Vector3 trans)
+    public void EnemyDieEffect(Vector3 trans,int score, int coin)
     {
+        UIManager.instance.UiScoreUpdate(score);
+        UIManager.instance.UiCoinUpdate(coin);
+
         particle[particleIndex].transform.position = trans;
         particle[particleIndex].Play();
         particleIndex++;
         particleIndex %= particle.Length;
+    }
+
+    public void NextStageStart()
+    {
+        spawner.EnemySpawnStart();
     }
 }
