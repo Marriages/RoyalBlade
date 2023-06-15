@@ -13,4 +13,9 @@ public class PlayerWeaponDetector : MonoBehaviour
             AttackEnemy?.Invoke(collision.gameObject);
         }
     }
+    public void WeaponSizeUp()
+    {
+        Debug.Log($"current Scale : {transform.localScale} / AttackRangeUp : {transform.localScale*1.2f}");
+        transform.localScale = transform.localScale * 1.2f;
+    }
 }

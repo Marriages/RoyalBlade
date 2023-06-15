@@ -22,6 +22,10 @@ public class PlayerView : MonoBehaviour
     {
         anim.SetTrigger("Attack");
     }
+    public void PlayerAttackSound()
+    {
+        AudioManager.instance.PlayerAttackSound();
+    }
     public void PlayerHeartChagne(int currentHeart)
     {
         UIManager.instance.UiHeartUpdate(currentHeart);

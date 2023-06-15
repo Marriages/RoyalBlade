@@ -114,13 +114,13 @@ public class EnemySet : MonoBehaviour
 
     public void EnemyBounce()
     {
-        Debug.Log("Bounce");
+        //Debug.Log("Bounce");
         rigid.velocity = Vector2.zero;
         rigid.AddForce(-moveVector, ForceMode2D.Impulse);
     }
     public void EnemyTouch()
     {
-        Debug.Log("Touch");
+        //Debug.Log("Touch");
         rigid.velocity=Vector2.zero;
     }
 

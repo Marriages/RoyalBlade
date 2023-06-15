@@ -1,8 +1,6 @@
-using System.Collections;
-using System.Collections.Generic;
-using System.Threading;
-using Unity.VisualScripting;
+
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
@@ -63,6 +61,7 @@ public class GameManager : MonoBehaviour
     {
         //Debug.Log("GameManager : PlayerAttack()");
         player.PlayerAttack();
+        AudioManager.instance.PlayerAttackSound();
     }
     public void PlayerJump()
     {
@@ -97,6 +96,7 @@ public class GameManager : MonoBehaviour
         else if (enemySet.gameObject != obj)
             enemySet = obj.transform.parent.GetComponent<EnemySet>();
         enemySet.EnemyBounce();
+        AudioManager.instance.PlayerGuardSound();
 
         //쿨타임 적용할 것
         //UIManager에게 일임
@@ -112,6 +112,7 @@ public class GameManager : MonoBehaviour
             enemySet = obj.transform.parent.GetComponent<EnemySet>();
         //UIManager 에게 Heart감소 알림
         enemySet.EnemyBounce();
+        AudioManager.instance.PlayerHitSound();
     }
 
     public void PlayerAttackEnemy(GameObject obj,int damage)
@@ -148,10 +149,17 @@ public class GameManager : MonoBehaviour
         particle[particleIndex].Play();
         particleIndex++;
         particleIndex %= particle.Length;
+        AudioManager.instance.EnemyDieSound();
     }
 
     public void NextStageStart()
     {
         spawner.EnemySpawnStart();
+    }
+
+
+    public void GameRestart()
+    {
+        SceneManager.LoadScene(0);
     }
 }

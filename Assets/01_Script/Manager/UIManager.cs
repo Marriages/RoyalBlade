@@ -33,7 +33,19 @@ public class UIManager : MonoBehaviour
 
     TextMeshProUGUI stage;
 
-    Button nextStageButton;
+    GameObject nextStageReady;
+    int damageUpPrice = 4;
+    int attackRangeUpPrice = 10;
+    TextMeshProUGUI damageUpText;
+    TextMeshProUGUI currentDamageText;
+    TextMeshProUGUI attackRangeUpText;
+    TextMeshProUGUI currentattackRangeText;
+    
+
+
+    GameObject gameOverButton;
+
+    PlayerController player;
 
 
     private void Awake()
@@ -59,7 +71,15 @@ public class UIManager : MonoBehaviour
 
         stage = canvas.transform.GetChild(3).GetComponent<TextMeshProUGUI>();
 
-        nextStageButton = canvas.transform.GetChild(4).GetComponent<Button>();
+        nextStageReady = canvas.transform.GetChild(4).gameObject;
+        currentDamageText = canvas.transform.GetChild(4).GetChild(1).GetChild(0).GetChild(1).GetComponent<TextMeshProUGUI>();
+        damageUpText = canvas.transform.GetChild(4).GetChild(1).GetChild(0).GetChild(2).GetComponent<TextMeshProUGUI>();
+        currentattackRangeText = canvas.transform.GetChild(4).GetChild(1).GetChild(1).GetChild(1).GetComponent<TextMeshProUGUI>();
+        attackRangeUpText = canvas.transform.GetChild(4).GetChild(1).GetChild(1).GetChild(2).GetComponent<TextMeshProUGUI>();
+
+        gameOverButton = canvas.transform.GetChild(5).gameObject;
+
+        player = FindObjectOfType<PlayerController>();
     }
     private void Start()
     {
@@ -71,9 +91,16 @@ public class UIManager : MonoBehaviour
 
         scoreText.text = "0";
         currentScore = 0;
-        coinText.text = "0";
+        coinText.text = "Current : 0";
         currentCoin = 0;
         jewelText.text = "0";
+        if (gameOverButton.activeSelf == true)
+            gameOverButton.SetActive(false);
+
+        damageUpText.text = $"Price : {damageUpPrice}";
+        attackRangeUpText.text = $"Price : {attackRangeUpPrice}";
+        currentDamageText.text = $"Current :  {player.GiveCurrentPlayerDamage()}";
+        currentattackRangeText.text = $"Current :  { player.GiveCurrentPlayerAttackRange()}";
     }
     private void Update()
     {
@@ -112,7 +139,7 @@ public class UIManager : MonoBehaviour
     public void UiCoinUpdate(int value)
     {
         currentCoin += value;
-        coinText.text = currentCoin.ToString();
+        coinText.text = $"Coin : {currentCoin}";
     }
     public void UiStageUpdate(int value)
     {
@@ -167,8 +194,40 @@ public class UIManager : MonoBehaviour
 
     public void NextStageReady()
     {
-        nextStageButton.gameObject.SetActive(true);
+        if(nextStageReady != null)
+            nextStageReady.gameObject.SetActive(true);
+    }
+    public void GameOver()
+    {
+        Debug.Log("GameOver");
+        gameOverButton.SetActive(true);
+        AudioManager.instance.GameOverSoune();
     }
 
-    
+
+    public void BuyDamageUp()
+    {
+        if(currentCoin >=damageUpPrice)
+        {
+            UiCoinUpdate(-damageUpPrice);
+            player.DamageUp(1);
+            //텍스트도 바꿔야지
+            damageUpPrice *= 2;
+            damageUpText.text = $"Price : {damageUpPrice}";
+            currentDamageText.text = $"Current :  {player.GiveCurrentPlayerDamage()}";
+        }
+    }
+    public void BuyAttackRangeUp()
+    {
+        if (currentCoin >= attackRangeUpPrice)
+        {
+            UiCoinUpdate(-attackRangeUpPrice);
+            player.AttackRangeUp();
+            attackRangeUpPrice *= 2;
+            attackRangeUpText.text = $"Price : {attackRangeUpPrice}";
+            currentattackRangeText.text = $"Current : {player.GiveCurrentPlayerAttackRange()}";
+        }
+    }
+
+
 }

@@ -46,7 +46,11 @@ public class PlayerController : MonoBehaviour
     {
         //Debug.Log("PlayerController : PlayerJump()");
         if (model.isLanding == true)
+        {
             rigid.AddForce(new(0, model.jumpPower), ForceMode2D.Impulse);
+            AudioManager.instance.PlayerJumpSound();
+
+        }
             //Debug.Log("PlayerController : PlayerJump() Fail : Not Landing");
     }
     public void PlayerGuardOn()
@@ -121,6 +125,25 @@ public class PlayerController : MonoBehaviour
         rigid.gravityScale = 0;
         BoxCollider2D col = GetComponent<BoxCollider2D>();
         col.enabled = false;
+
+        UIManager.instance.GameOver();
+    }
+
+    public void DamageUp(int upValue)
+    {
+        model.atackPower += upValue;
+    }
+    public void AttackRangeUp()
+    {
+        playerWeapon.WeaponSizeUp();
+    }
+    public int GiveCurrentPlayerDamage()
+    {
+        return model.atackPower;
+    }
+    public float GiveCurrentPlayerAttackRange()
+    {
+        return playerWeapon.transform.localScale.x;
     }
 
 }
