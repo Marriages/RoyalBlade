@@ -8,7 +8,7 @@ public class EnemySet : MonoBehaviour
     int enemyCount = 0;
     int leftEnemyCount = 0;
     Rigidbody2D rigid;
-    Spawner spawner;
+    SpawnManager spawner;
     int enemySingleHp;
     int enemySpeed;
     int enemySIngleScore;
@@ -26,7 +26,7 @@ public class EnemySet : MonoBehaviour
             FindEnemySingles();
         }
         rigid=GetComponent<Rigidbody2D>();
-        spawner = transform.parent.GetComponent<Spawner>();
+        spawner = transform.parent.GetComponent<SpawnManager>();
         
     }
     void FindEnemySingles()

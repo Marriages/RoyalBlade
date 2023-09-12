@@ -12,7 +12,7 @@ public class GameManager : MonoBehaviour
     int particleIndex = 0;
     PlayerHitEffect[] hitEffects;
     int hitEffectIndex = 0;
-    Spawner spawner;
+    SpawnManager spawner;
     //---------------------------------------------------------------------------------------------------
 
     private void Awake()
@@ -26,7 +26,7 @@ public class GameManager : MonoBehaviour
         hitEffects = new PlayerHitEffect[transform.GetChild(1).childCount];
         for(int i=0;i<hitEffects.Length;i++)
             hitEffects[i]=transform.GetChild(1).GetChild(i).GetComponent<PlayerHitEffect>();
-        spawner = GameObject.Find("Spawner").GetComponent<Spawner>();
+        spawner = GameObject.Find("Spawner").GetComponent<SpawnManager>();
 
     }
 
